@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if categorys_list %}
 <h2>ALL POSTS CATEGORY: {{ title_cat }}</h2>
 <br>
 {% for post in categorys_list %}
@@ -21,4 +22,7 @@
     <hr>
 
 {% endfor %}
+{% else %}
+<p style="text-align: center;">Oops! I cannot find posts or category :(</p>
+{% endif %}
 {% endblock %}
