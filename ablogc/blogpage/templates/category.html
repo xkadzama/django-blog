@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>ALL POSTS CATEGORY: {{ title_cat }}</h2>
+<br>
+{% for post in categorys_list %}
+    <h3> <a href="{% url 'detail-page' post.pk %}"> {{ post.title }} </a> </h3> 
+    <small> author by: {{ post.author }} </small>
+    <br>
+    <small>category: #{{ post.category }}</small>
+    <p> {{ post.body|slice:200|safe }} </p>
+    <small>{{post.post_date}}</small>
+
+    {% if user.is_authenticated and user == post.author %}  
+    <br>
+    <small><a href="{% url 'delete-post-page' post.pk %}" style="text-decoration:none; color:red"> Delete </a> </small>
+    <span style="color:gray">|</span>
+    <small><a href="{% url 'update-post-page' post.pk %}" style="text-decoration:none; color:blue"> Update </a> </small>
+    {% endif %}
+    <hr>
+
+{% endfor %}
+{% endblock %}

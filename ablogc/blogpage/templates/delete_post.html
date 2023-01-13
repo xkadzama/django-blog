@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{post.title}}{% endblock %}
+
+
+{% block content %}
+
+{% if user.is_authenticated and user == post.author %}
+<h4>{{ post.title }}</h1>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure?</p>
+    <p><button class="btn btn-danger"> Delete </button></p>
+    <!-- <a href="{% url 'home-page' %}" class="btn btn-primary"> BACK </a> -->
+</form>
+
+{% else %}
+<p style="text-align:center">Sorry! You forgot log in your account</p>
+{% endif %}
+
+{% endblock %}
