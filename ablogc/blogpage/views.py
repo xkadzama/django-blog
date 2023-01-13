@@ -37,6 +37,5 @@ class UpdatePostPage(UpdateView):
 
 
 def CategoryView(request, cat): 
-    category_posts = Post.objects.filter(category=cat)
-    print(category_posts)
-    return render(request, 'category.html', {'categorys_list':category_posts, 'title_cat':cat})
+    category_posts = Post.objects.filter(category=cat.replace('-', ' '))
+    return render(request, 'category.html', {'categorys_list':category_posts, 'title_cat':cat.replace('-', ' ')})

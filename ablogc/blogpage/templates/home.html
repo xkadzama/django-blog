@@ -8,7 +8,7 @@
     <h3> <a href="{% url 'detail-page' post.pk %}"> {{ post.title }} </a> </h3> 
     <small> author by: {{ post.author }} </small>
     <br>
-    <small>category: <a href="{% url 'category' post.category %}">{{ post.category }}</a></small>
+    <small>category: <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a></small>
     <p> {{ post.body|slice:200|safe }} </p>
     <small>{{post.post_date}}</small>
 
